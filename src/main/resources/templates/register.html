@@ -1,0 +1,86 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register | CampusConnect</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f3f4f6;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        .register-box {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            width: 350px;
+            max-width: calc(100% - 60px);
+            box-shadow: 0 4px 18px #00000015;
+        }
+
+        h1 {
+            text-align: center;
+            color: #34246b;
+        }
+
+        input {
+            box-sizing: border-box;
+            width: 100%;
+            padding: 12px;
+            margin: 8px 0 14px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background: #34246b;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        a {
+            color: #34246b;
+        }
+    </style>
+</head>
+<body>
+    <div class="register-box">
+        <h1>Join CampusConnect</h1>
+        <p>Create your student account.</p>
+        <p th:if="${error}" th:text="${error}"
+            style="color: red;"></p>
+        <form th:action="@{/register}" method="post">
+            <label for="name">Full name</label>
+            <input id="name" type="text" name="name" required>
+
+            <label for="email">Email</label>
+            <input id="email" type="email" name="email" required>
+
+            <label for="password">Password</label>
+            <input id="password" type="password" name="password"
+                   minlength="8" required>
+
+            <label for="university">University</label>
+            <input id="university" type="text" name="university" required>
+
+            <label for="skills">Skills</label>
+            <input id="skills" type="text" name="skills">
+
+            <button type="submit">Create Account</button>
+        </form>
+
+        <p>Already registered? <a th:href="@{/login}">Sign in</a></p>
+    </div>
+</body>
+</html>
